@@ -3,16 +3,16 @@ package com.example.storrowdrive;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.MotionEvent;
 import android.view.Window;
 import android.view.WindowManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
-import androidx.annotation.NonNull;
+public class PauseActivity extends Activity {
 
-public class GameActivity extends Activity{
-    private GamePanel gamepanel;
+    //set bitmap background for pause screen
+    //have if you click anywhere go back to game activity
+    //stop game loop from the game activity
+
+    private PausePanel pauseView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,7 @@ public class GameActivity extends Activity{
         DisplayMetrics screenConstants = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(screenConstants);
 
-        gamepanel = new GamePanel(ConstantVar.CONTEXT); //Create the GamePanel
-        setContentView(gamepanel);
-
+        pauseView = new PausePanel(ConstantVar.CONTEXT); //"this" should change and make new context var???????????
+        setContentView(pauseView);
     }
 }

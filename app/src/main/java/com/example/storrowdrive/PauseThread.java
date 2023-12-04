@@ -3,25 +3,24 @@ package com.example.storrowdrive;
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 
-public class GameThread extends Thread{
+public class PauseThread extends Thread{
     public static final int FPSmax = ConstantVar.MAXFPS;
     private double FPSave;
     private SurfaceHolder surfaceHolder;
-    private GamePanel screenPanelGame;
+    private PausePanel screenPausePanel;
     private boolean isRunning = false;
     private Canvas canvas;
 
 
-    public GameThread(SurfaceHolder surfaceHolder, GamePanel gamePanel) {
+    public PauseThread(SurfaceHolder surfaceHolder, PausePanel pause) {
         super();
         this.surfaceHolder = surfaceHolder;
-        this.screenPanelGame = gamePanel;
+        this.screenPausePanel = pause;
     }
 
     public void setRunning(boolean runSource) {
         this.isRunning = runSource;
     }
-
     @Override
     public void run() {
         super.run();
@@ -41,8 +40,8 @@ public class GameThread extends Thread{
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder)
                 {
-                    this.screenPanelGame.update();
-                    this.screenPanelGame.draw(canvas);
+                    this.screenPausePanel.update();
+                    this.screenPausePanel.draw(canvas);
                 }
             }
             catch (Exception e)
@@ -88,5 +87,4 @@ public class GameThread extends Thread{
     }
 
 }
-
 

@@ -1,7 +1,5 @@
 package com.example.storrowdrive;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
@@ -19,19 +17,15 @@ import androidx.annotation.NonNull;
  */
 public class Panel extends SurfaceView implements SurfaceHolder.Callback
 {
-
     Bitmap background;
-
-    private GameThread thread;
-
+    private MainThread thread;
 
     public Panel(Context context)
     {
         super(context);
         getHolder().addCallback(this); //Register the Panel class as a SurfaceHolder callback listener
         ConstantVar.CONTEXT = context; //Everytime the Game is instantiated, a MainActivity context is created
-        thread = new GameThread(getHolder(), this); //Create a thread
-        setFocusable(true); //Make the Panel attentive to user input
+        setFocusable(true); //Make the Panel the focus of the screen since it handles user input
 
         //Set the background
         Bitmap OG = BitmapFactory.decodeResource(getResources(), R.drawable.startup);
@@ -43,7 +37,7 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback
 
     @Override //from SurfaceHolder
     public void surfaceCreated(@NonNull SurfaceHolder holder){ //Create the first Surface
-        thread = new GameThread(getHolder(),this);
+        thread = new MainThread(getHolder(),this); //Create the thread for gamelooping
         thread.setRunning(true);
         thread.start();
     }
@@ -53,21 +47,19 @@ public class Panel extends SurfaceView implements SurfaceHolder.Callback
 
     @Override //from SurfaceHolder
     public boolean onTouchEvent(MotionEvent event){
+        thread.setRunning(false); //Stop the thread
+        thread.interrupt();
+        Intent intent = new Intent(ConstantVar.CONTEXT, GameActivity.class); //Create an intent to start the GameActivity
+        ConstantVar.CONTEXT.startActivity(intent);
 
-        startGameActivity();
         return true;
     }
 
-    public void startGameActivity(){
-        Intent intent = new Intent(ConstantVar.CONTEXT, GameActivity.class);
-        ConstantVar.CONTEXT.startActivity(intent);
-    }
-
-    public void update(){}
+    public void update(){} //Keep in case of Start Screen Animations in the future
 
     @Override //from SurfaceView
     public void draw(Canvas canvas){
         super.draw(canvas);
-        canvas.drawBitmap(background, 0, 0, null);
+        canvas.drawBitmap(background, 0, 0, null); //Draw the background
     }
 }

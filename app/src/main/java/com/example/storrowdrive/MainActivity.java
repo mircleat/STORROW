@@ -8,9 +8,6 @@ import android.util.DisplayMetrics; //Handles use of phone display variables fro
 import android.view.Window; //Handles set(phone display variations)
 import android.view.WindowManager; //Handles get(phone display specifications)
 
-//TODO: create the Scene class similar to the GameView class of CGT and GamePanel from GH
-//TODO: add Swipe events
-
 /*
     MainActivity is the starting point for the application
  */
@@ -25,9 +22,11 @@ public class MainActivity extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        //Set the screen size constants
+        //Get the screen size
         DisplayMetrics screenConstants = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(screenConstants);
+
+        //Set the screen size constants
         ConstantVar.WIDTH = screenConstants.widthPixels;
         ConstantVar.HEIGHT = screenConstants.heightPixels;
 
@@ -35,14 +34,14 @@ public class MainActivity extends Activity {
         ambientMusic = MediaPlayer.create(MainActivity.this, R.raw.clubmusic);
         ambientMusic.setLooping(true);
 
-        //Create the Start Page
+        //Create the Start View
         startView = new Panel(this);
         setContentView(startView);
 
     }
 
     @Override
-    protected void onResume() { //ON RESUME DO THIS
+    protected void onResume() { //ON VIEW DO THIS
         super.onResume();
         ambientMusic.start();
     }
@@ -52,6 +51,4 @@ public class MainActivity extends Activity {
         super.onPause();
         ambientMusic.pause();
     }
-
-
 }
