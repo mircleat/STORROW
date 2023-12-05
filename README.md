@@ -4,7 +4,7 @@ Made through Android Studio.
 
 
 ## Authors
-Members name - Wiki name - bu email:
+Members name - Wiki name - BU email:
 - Dominic Murphy - DomMurphy - ddmurphy@bu.edu
 - Gordon Zhu  -  gordonnzhuu - gordonz@bu.edu
 - Mirclea Tan - mircleat - mircleat@bu.edu
