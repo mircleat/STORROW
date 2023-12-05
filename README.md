@@ -5,10 +5,10 @@ Made through Android Studio.
 
 ## Authors
 Members name - Wiki name - bu email:
-Dominic Murphy - DomMurphy - ddmurphy@bu.edu
-Gordon Zhu  -  gordonnzhuu - gordonz@bu.edu
-Mirclea Tan - mircleat - mircleat@bu.edu
-Vikhram Bhalla - vsbhalla - bhvikram@bu.edu
+- Dominic Murphy - DomMurphy - ddmurphy@bu.edu
+- Gordon Zhu  -  gordonnzhuu - gordonz@bu.edu
+- Mirclea Tan - mircleat - mircleat@bu.edu
+- Vikhram Bhalla - vsbhalla - bhvikram@bu.edu
 
 ### How to run your project.
 - Download the zip file of this repository and extract it.
